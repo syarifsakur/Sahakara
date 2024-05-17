@@ -1,0 +1,23 @@
+import right from "../../../assets/right.svg"
+import left from "../../../assets/left.svg"
+import CardReview from "../../../components/card/reviewPengguna"
+import fp1 from "../../../assets/fp1.svg"
+import fp2 from "../../../assets/fp2.svg"
+import fp3 from "../../../assets/fp3.svg"
+
+const Main3 = () => {
+  return (
+        <div className="w-full py-10 flex flex-col gap-y-20 bg-gradient-to-r from-blue-950 to-red-700 ">
+            <h1 className="text-center text-white font-bold text-4xl">Review Pengguna Lucky Futsal</h1>
+            <div className="mx-10 flex gap-x-10 justify-between items-center">
+            <img src={left} alt="" className="h-20 w-20"/>
+            <CardReview text="“Lapangannya bagus, bersih, dan ga ribet. Plus, stafnya ramah-ramah. Paling suka sama suasana nyaman dan harga yang terjangkau.”" fp={fp1} nama="Hadi Prasetyo"></CardReview>
+            <CardReview text="“Cara mudah utk booking lapangan futsal, gampang dapatnya, mudah bayarnya, terima kasih.”" fp={fp2} nama="Candrika"></CardReview>
+            <CardReview text="“Paling enak sih di Lucky Futsal, Lapangannya mantap, gak ada yang bolong-bolong. Harganya juga bersahabat buat kantong mahasiswa kayak aku.”" fp={fp3} nama="Rizky Anugrah"></CardReview>
+            <img src={right} alt="" className="h-20 w-20"/>
+            </div>
+      </div>
+  )
+}
+
+export default Main3
