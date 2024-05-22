@@ -20,15 +20,15 @@ const Main = () => {
             className="rounded-3xl w-full h-[400px] md:h-[500px] lg:h-full object-cover"
           />
           <div className="kata justify-center poppins text-white font-bold items-center text-center  h-28 flex flex-col gap-y-8 max-w-full absolute my-1/2 mx-20">
-            <h2 className="text-base sm:text-xl md:text-2xl lg:text-6xl">
+            <h2 className="text-base sm:text-xl md:text-2xl lg:text-5xl">
               GEBRAKAN DI ERA DIGITAL
             </h2>
-            <h2 className="text-base sm:text-xl md:text-2xl lg:text-4xl max-w-[800px]">
+            <h2 className="text-base sm:text-xl md:text-2xl lg:text-3xl max-w-[800px]">
               Memanfaatkan Teknologi Untuk Mempermudah dan Mempercepat Proses
               Pembookingan lapangan Futsal.
             </h2>
             <Button
-              className=" bg-blue-950 mt-10 md:mt-20 h-8 md:h-10 lg:h-14 w-40 lg:w-56 text-xs md:text-sm lg:text-xl hover:bg-blue-700"
+              className=" bg-blue-950 mt-10 md:mt-20 h-8 md:h-10 lg:h-12 w-40 lg:w-56 text-xs md:text-sm lg:text-lg hover:bg-blue-700"
               text="Booking Sekarang"
             ></Button>
             <h1></h1>

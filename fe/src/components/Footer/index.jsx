@@ -4,7 +4,7 @@ import yt from "../../assets/yt.svg"
 
 const Footer = () => {
   return (
-    <div className="bg-blue-950 h-32 poppins ">
+    <div className="bg-blue-950 h-28 poppins ">
         <div className=" flex mx-20 h-full items-center justify-between text-white text-xl">
         <div className="flex gap-x-40">
             <h1>2024 Lucky Futsal</h1>

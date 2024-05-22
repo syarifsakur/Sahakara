@@ -5,10 +5,10 @@ const FeatTurnamen = () => {
   return (
     <div className="w-full">
         <img src={bg} alt="" className="w-full"/>
-        <div className="w-full border-2 flex flex-col justify-center items-center gap-y-10 -mt-64 text-blue-950">
-          <h3 className="font-bold text-[40px]">Hubungi Lucky Futsal Untuk Menyelenggarakan Turnamen</h3>
+        <div className="w-full border-2 flex flex-col justify-center items-center gap-y-10 -mt-52 text-blue-950">
+          <h3 className="font-bold text-[32px]">Hubungi Lucky Futsal Untuk Menyelenggarakan Turnamen</h3>
           <Button
-              className=" bg-blue-950 h-14 w-56 text-xl hover:bg-blue-700"
+              className=" bg-blue-950 h-12 w-52 text-lg hover:bg-blue-700"
               text="Hubungi Sekarang"
             ></Button>
         </div>
