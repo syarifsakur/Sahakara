@@ -1,6 +1,6 @@
 import foto from "../../../assets/img.png";
 import CardTurnamen from "../../../components/card/Turnamen";
-import group from "../../../assets/Group.svg"
+import group from "../../../assets/Group.svg";
 
 const FeatKontenTurnamen = () => {
   return (
@@ -52,6 +52,30 @@ const FeatKontenTurnamen = () => {
           alamat="lapangan lucky futsal samarinda"
           penyelanggara="infinite learning"
         ></CardTurnamen>
+        <CardTurnamen
+          foto={foto}
+          judul="Futsal"
+          ttl="22 september 2024"
+          kategori="futsal"
+          alamat="lapangan lucky futsal samarinda"
+          penyelanggara="infinite learning"
+        ></CardTurnamen>
+        <CardTurnamen
+          foto={foto}
+          judul="Futsal"
+          ttl="22 september 2024"
+          kategori="futsal"
+          alamat="lapangan lucky futsal samarinda"
+          penyelanggara="infinite learning"
+        ></CardTurnamen>
+        <CardTurnamen
+          foto={foto}
+          judul="Futsal"
+          ttl="22 september 2024"
+          kategori="futsal"
+          alamat="lapangan lucky futsal samarinda"
+          penyelanggara="infinite learning"
+        ></CardTurnamen>
       </div>
       <div className="flex justify-center items-center my-14 gap-3">
         <a href="" className="">
@@ -59,10 +83,11 @@ const FeatKontenTurnamen = () => {
             Tampilkan Lebih Banyak
           </h1>
         </a>
-        <img 
-        src={group} 
-        alt="" 
-        className="h-5 fill-blue-950 animate-bounce text-[26px]"/>
+        <img
+          src={group}
+          alt=""
+          className="h-5 fill-blue-950 animate-bounce text-[26px]"
+        />
       </div>
     </div>
   );

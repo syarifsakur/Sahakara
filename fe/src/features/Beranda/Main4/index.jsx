@@ -11,7 +11,7 @@ const Main4 = () => {
           Hubungi kami melalui telepon atau pesan WhatsApp untuk informasi lebih
           lanjut. Tunggu apa lagi? Ayo bermain futsal di Lucky Futsal!
         </h1>
-        <Button className="bg-blue-950 h-[50px]" text="Tanyakan Sekarang"></Button>
+        <Button className="bg-blue-950 h-[50px]" text="Tanyakan Sekarang" color="white"></Button>
       </div>
     </div>
   );

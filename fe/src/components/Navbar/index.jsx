@@ -63,7 +63,7 @@ const Navbar = () => {
               <li><a href="/lokasi" className={location.pathname === '/lokasi' ? activeLinkClass : ''}>Lokasi</a></li>
               <li><a href="http://wa.me/628115811212">Kontak</a></li>
               <li><a href="/blog" className={location.pathname === '/blog' ? activeLinkClass : ''}>Blog</a></li>
-              <li><a href="/turnamen" className={location.pathname === '/turnamen' ? activeLinkClass : ''}>Turnamen</a></li>
+              <li><a href="/turnamen" className={location.pathname === '/turnamen' || location.pathname==='/turnamen/detail' ? activeLinkClass : ''}>Turnamen</a></li>
             </ul>
           </div>
         </div>

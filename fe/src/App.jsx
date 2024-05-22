@@ -5,6 +5,8 @@ import Jadwal from "./pages/Jadwal";
 import LokasiPages from "./pages/lokasi";
 import BlogPages from "./pages/blog";
 import TurnamenPages from "./pages/turnamen";
+import DetailTurnamen from "./pages/DetailTurnamen";
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
         <Route path="/Lokasi" element={<LokasiPages/>} />
         <Route path="/Blog" element={<BlogPages/>} />
         <Route path="/Turnamen" element={<TurnamenPages/>} />
+        <Route path="/Turnamen/Detail" element={<DetailTurnamen/>} />
       </Routes>
     </BrowserRouter>
     

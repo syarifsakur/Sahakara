@@ -4,7 +4,7 @@ import lokasi from "../../../assets/lokasiTurnamen.svg"
 
 const CardTurnamen = ({foto,judul,ttl,kategori,alamat,penyelanggara}) => {
   return (
-    <a href="/">
+    <a href="/turnamen/detail">
       <div className="h-[500px] rounded-3xl shadow-2xl">
         <img
           src={foto}

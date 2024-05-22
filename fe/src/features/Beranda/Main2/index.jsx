@@ -39,6 +39,7 @@ const Main2 = () => {
           <Button
             className=" bg-blue-950 mt-10 md:mt-20 h-8 md:h-10 lg:h-12 w-40 lg:w-56 text-xs md:text-sm lg:text-lg hover:bg-blue-700 ml-44"
             text="Booking Sekarang"
+            color="white"
           ></Button>
         </div>
       </div>

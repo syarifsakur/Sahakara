@@ -10,6 +10,7 @@ const FeatTurnamen = () => {
           <Button
               className=" bg-blue-950 h-12 w-52 text-lg hover:bg-blue-700"
               text="Hubungi Sekarang"
+              color="white"
             ></Button>
         </div>
 
