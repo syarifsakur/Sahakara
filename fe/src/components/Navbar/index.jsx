@@ -30,7 +30,7 @@ const Navbar = () => {
     className="sm:hidden w-6  h-6 hover:cursor-pointer"
     onClick={toggleMobile}
   />
-  <div className="sm:hidden  bg-blue-950 -mr-20 -ml-[200px] px-5 py-4 gap-2 mt-2"> 
+  <div className="sm:hidden sticky top-0  bg-blue-950 -mr-20 -ml-[200px] px-5 py-4 gap-2 mt-2"> 
     <ul className="  text-xl flex flex-col items-start ">
       <li><a href="/" className={location.pathname === '/' ? activeLinkClass : ''}>Beranda</a></li>
       <li><a href="/jadwal" className={location.pathname === '/jadwal' ? activeLinkClass : ''}>Jadwal &amp; Harga</a></li>

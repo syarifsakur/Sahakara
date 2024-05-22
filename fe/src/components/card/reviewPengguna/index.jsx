@@ -4,7 +4,7 @@ const CardReview = ({text,fp,nama}) => {
       <h1 className="line-clamp-4 text-base">{text}</h1>
       <div className="flex items-center justify-start gap-x-4  font-bold">
         <img src={fp} alt="" />
-        <h1 className="text-2xl">{nama}</h1>
+        <h1 className="text-xl">{nama}</h1>
       </div>
     </div>
   )
