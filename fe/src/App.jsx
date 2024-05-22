@@ -11,11 +11,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPages/>}/>
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/jadwal" element={<Jadwal/>} />
+        <Route path="/Register" element={<Register/>}/>
+        <Route path="/Jadwal" element={<Jadwal/>} />
         <Route path="/Lokasi" element={<LokasiPages/>} />
         <Route path="/Blog" element={<BlogPages/>} />
-        <Route path="/turnamen" element={<TurnamenPages/>} />
+        <Route path="/Turnamen" element={<TurnamenPages/>} />
       </Routes>
     </BrowserRouter>
     

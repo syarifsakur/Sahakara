@@ -1,0 +1,25 @@
+{
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/"
+    },
+    {
+        "src": "/Jadwal",
+        "dest": "/"
+      },
+      {
+        "src": "/Lokasi",
+        "dest": "/"
+      },
+      {
+        "src": "/Blog",
+        "dest": "/"
+      },
+      {
+        "src": "/Turnamen",
+        "dest": "/"
+      }
+
+  ]
+}
