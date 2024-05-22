@@ -19,6 +19,9 @@
       {
         "src": "/Turnamen",
         "dest": "/"
+      },      {
+        "src": "/Turnamen/Detail",
+        "dest": "/"
       }
 
   ]
