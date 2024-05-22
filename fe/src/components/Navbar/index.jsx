@@ -59,11 +59,11 @@ const Navbar = () => {
             </button>
             <ul className="hidden sm:flex justify-center items-center h-14 gap-x-4 lg:gap-x-12 text-xs lg:text-2xl md:text-base sm:text-sm">
               <li><a href="/" className={location.pathname === '/' ? activeLinkClass : ''}>Beranda</a></li>
-              <li><a href="/jadwal" className={location.pathname === '/jadwal' ? activeLinkClass : ''}>Jadwal &amp; Harga</a></li>
-              <li><a href="/lokasi" className={location.pathname === '/lokasi' ? activeLinkClass : ''}>Lokasi</a></li>
-              <li><a href="http://wa.me/6282235059316">Kontak</a></li>
-              <li><a href="/blog" className={location.pathname === '/blog' ? activeLinkClass : ''}>Blog</a></li>
-              <li><a href="/turnamen" className={location.pathname === '/turnamen' ? activeLinkClass : ''}>Turnamen</a></li>
+              <li><a href="https://sahakara.vercel.app/jadwal" className={location.pathname === '/jadwal' ? activeLinkClass : ''}>Jadwal &amp; Harga</a></li>
+              <li><a href="https://sahakara.vercel.app/lokasi" className={location.pathname === '/lokasi' ? activeLinkClass : ''}>Lokasi</a></li>
+              <li><a href="https://sahakara.vercel.app/http://wa.me/628115811212">Kontak</a></li>
+              <li><a href="https://sahakara.vercel.app/blog" className={location.pathname === '/blog' ? activeLinkClass : ''}>Blog</a></li>
+              <li><a href="https://sahakara.vercel.app/turnamen" className={location.pathname === '/turnamen' ? activeLinkClass : ''}>Turnamen</a></li>
             </ul>
           </div>
         </div>
