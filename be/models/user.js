@@ -1,31 +1,20 @@
-const { Sequelize , DataTypes} = require("sequelize")
-const db = require("../config//db")
+const db = require("../config/db");
 
-const User = db.define(
-    "user",
-    {
-    username:{
-        type: DataTypes.STRING
-    },
-    email:{
-        type:DataTypes.STRING
-    },
-    password:{
-        type: DataTypes.STRING
-    },
-    foto:{
-        type:DataTypes.STRING
-    },
-    role:{
-        type:DataTypes.ENUM("toko","User"),
-        defaultValue: "user"
-    },
-    token:{
-        type:DataTypes.STRING
+    const createTableUser = async()=>{
+        try {
+            const userQuery ="CREATE TABLE user (id INT AUTO_INCREMENT PRIMARY KEY, email VARCHAR(255) , password VARCHAR(255), nama VARCHAR(255), alamat VARCHAR(255))";
+
+            await db.query(userQuery,async()=>{
+                try {
+                    console.log("tabel berhasil terbuat")
+                } catch (error) {
+                    console.log(error)
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
-},{
-    freezeTableName:true
-});
 
 
-module.exports=User
+module.exports={createTableUser} 

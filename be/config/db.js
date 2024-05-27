@@ -1,18 +1,19 @@
-const sequelize = require("sequelize")
+const mysql = require("mysql2")
 
-const db = new sequelize("tfs","root","",{
+const db = mysql.createPool({
     host:"localhost",
-    dialect:"mysql"
+    user:"root",
+    password:"",
+    database:"tfs"
 })
 
-try{
-db.authenticate()
-console.log("database terhubung")
-db.sync()
-console.log("tabel terhubung")
-}
-catch(error){
-    console.log("databse tidak terhubung",error)
-}
+db.getConnection(async function(err){
+    try {
+        console.log("database berhasil terhubung")
+    } catch (error) {
+        console.log("gagal terhubung")
+        throw err    
+    }
+})
 
 module.exports=db
