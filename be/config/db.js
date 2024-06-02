@@ -1,19 +1,20 @@
-const mysql = require("mysql2")
+const mysql = require("mysql2/promise")
 
 const db = mysql.createPool({
     host:"localhost",
     user:"root",
     password:"",
-    database:"tfs"
+    database:"tfs",
 })
 
-db.getConnection(async function(err){
+db.getConnection(()=>{
     try {
-        console.log("database berhasil terhubung")
+        console.log("berhasil terhubung ke database")
     } catch (error) {
         console.log("gagal terhubung")
-        throw err    
     }
 })
+
+
 
 module.exports=db

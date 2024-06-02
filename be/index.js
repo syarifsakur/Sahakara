@@ -1,13 +1,17 @@
 const express = require("express")
 const app = express()
 port = 2003
-const db = require("./config/db")
+const router= require("./routes/auth")
+const cookieParser = require("cookie-parser")
 
-app.get("/",(req,res)=>{
-    res.status(200).json({message:"welcome to my app"})
-    console.log("berhasill welcome awokawok")
-})
+app.use(cookieParser())
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use(router)
+
+
+
 
 app.listen(port,()=>{
-    console.log("server berjalan di port",port)
+    console.log("berhasil berjalan server di port",port)
 })
