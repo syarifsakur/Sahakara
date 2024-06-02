@@ -10,16 +10,19 @@ module.exports = {
   },
 
   register: async (req, res) => {
-    const { email, katasandi, kontak } = req.body;
-    if (!email || !katasandi || !kontak) {
-      return res.status(400).json({ message: "harus di isi semua" });
+    const { email, katasandi,nama,birthdate,alamat, kontak } = req.body;
+    const foto = req.file
+
+    if (!email || !katasandi || !kontak || !foto ||!nama||!birthdate||!alamat) {
+      return res.status(404).json({ message: "harus di isi semua" });
     }
     if (katasandi.length < 8) {
-      return res.status(400).json({ message: "password minimal 8 karakter" });
+      return res.status(404).json({ message: "password minimal 8 karakter" });
     }
     if (!email.includes("@")) {
-      return res.status(400).json({ message: "harus dengan format @" });
+      return res.status(404).json({ message: "harus dengan format @" });
     }
+    
     try {
       const [cekuser] = await db.query("SELECT * FROM user where email = ?", [
         email,
@@ -28,9 +31,11 @@ module.exports = {
         return res.status(402).json({ message: "email sudah terdaftar" });
       }
       const hashPassword = await bcrypt.hash(katasandi, 10);
+      const fotoPath = `${req.protocol}://${req.get('host')}/${foto.path}`;
+      const fotos = fotoPath.replace(/\\/g, '/')
       const data = await db.query(
-        "INSERT INTO user(email, katasandi, kontak) VALUES(?, ?, ?)",
-        [email, hashPassword, kontak]
+        "INSERT INTO user(email, katasandi,nama,foto,birthDate,alamat, kontak) VALUES(?, ?, ?,?,?,?,?)",
+        [email, hashPassword, nama,fotos,birthdate,alamat,kontak]
       );
       return res
         .status(201)

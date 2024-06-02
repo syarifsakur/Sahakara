@@ -8,6 +8,7 @@ const createUserTable = async () => {
         email VARCHAR(255) NOT NULL,
         katasandi VARCHAR(255) NOT NULL,
         nama VARCHAR(255),
+        foto VARCHAR(255),
         birthDate VARCHAR(255),
         alamat VARCHAR(255),
         kontak VARCHAR(50) ,
