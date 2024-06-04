@@ -14,17 +14,17 @@ const FeatDetailTurnamen = () => {
         <div className="w-full flex flex-col  lg:gap-y-4 px-10 -mt-28 lg:-mt-48 text-blue-950 poppins">
           <div className="flex w-full items-center">
             <Button
-              className=" bg-blue-950 lg:h-12 h-10 w-40 lg:w-60 pr-10 lg:pr-14 text-[13px] lg:text-xl hover:bg-blue-700"
+              className=" bg-blue-950 lg:h-12 h-10 w-40 lg:w-60 pr-16 lg:pr-14 text-[13px] lg:text-xl hover:bg-blue-700"
               text="Kompetisi Futsal"
               color="white"
             ></Button>
             <img
               src={bola}
               alt=""
-              className="h-6 w-6 lg:h-8 lg:w-8 absolute ml-32 lg:ml-48"
+              className="h-6 w-6 lg:h-8 lg:w-8 absolute -mt-5 lg:mt-0 ml-32 lg:ml-48"
             />
           </div>
-          <div className="w-full flex flex-col lg:gap-y-2">
+          <div className="w-full flex flex-col -mt-5 lg:mt-0 lg:gap-y-2">
             <h1 className="font-bold text-blue-950 text-2xl lg:text-5xl">
               Insevent
             </h1>
