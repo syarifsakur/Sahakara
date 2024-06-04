@@ -4,14 +4,14 @@ import group from "../../../assets/Group.svg";
 
 const FeatKontenTurnamen = () => {
   return (
-    <div className="mt-36">
-      <div className="flex w-full items-center gap-8 px-10">
-        <h1 className="text-2xl font-bold text-blue-950 w-[20%]">
+    <div className="mt-14 lg:mt-36">
+      <div className="flex w-full items-center gap-2 lg:gap-8 px-10">
+        <h1 className="text-xs lg:text-2xl font-bold text-blue-950 w-[40%] lg:w-[20%]">
           Event Kompetisi
         </h1>
         <div className="h-[1px] bg-[#091E42] w-full"></div>
       </div>
-      <div className="m-10 grid grid-cols-4 gap-10">
+      <div className="m-10 lg:m-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
         <CardTurnamen
           foto={foto}
           judul="Futsal"
@@ -26,7 +26,7 @@ const FeatKontenTurnamen = () => {
           ttl="22 september 2024"
           kategori="futsal"
           alamat="lapangan lucky futsal samarinda"
-          penyelanggara="infinite learning"
+          penyelanggara="infinite learning dddsdsdsdsdsdsdsdsdsd"
         ></CardTurnamen>
         <CardTurnamen
           foto={foto}

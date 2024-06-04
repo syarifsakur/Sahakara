@@ -30,14 +30,14 @@ const Navbar = () => {
     className="sm:hidden w-6  h-6 hover:cursor-pointer"
     onClick={toggleMobile}
   />
-  <div className="sm:hidden sticky top-0  bg-blue-950 -mr-20 -ml-[200px] px-5 py-4 gap-2 mt-2"> 
+  <div className="sm:hidden sticky top-0  bg-blue-950 -mr-10 -ml-[200px] px-5 py-4 gap-2 mt-2"> 
     <ul className="  text-xl flex flex-col items-start ">
       <li><a href="/" className={location.pathname === '/' ? activeLinkClass : ''}>Beranda</a></li>
       <li><a href="/jadwal" className={location.pathname === '/jadwal' ? activeLinkClass : ''}>Jadwal &amp; Harga</a></li>
       <li><a href="/lokasi" className={location.pathname === '/lokasi' ? activeLinkClass : ''}>Lokasi</a></li>
       <li><a href="http://wa.me/6282235059316">Kontak</a></li>
       <li><a href="/blog" className={location.pathname === '/blog' ? activeLinkClass : ''}>Blog</a></li>
-      <li><a href="/turnamen" className={location.pathname === '/turnamen' ? activeLinkClass : ''}>Turnamen</a></li>
+      <li><a href="/turnamen" className={location.pathname === '/turnamen' || location.pathname === '/turnamen/detail' ? activeLinkClass : ''}>Turnamen</a></li>
     </ul>
     </div>
 

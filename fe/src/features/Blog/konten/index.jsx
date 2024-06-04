@@ -22,8 +22,8 @@ const FeatKontenBlog = () => {
   }, []);
 
   return (
-    <div className="mt-40 ">
-      <div className="mx-10 grid grid-cols-4 gap-10">
+    <div className="mt-16 lg:mt-40 ">
+      <div className="mx-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
         {berita?.map((k, index) => (
           <CardBlog
             key={index}
