@@ -94,4 +94,14 @@ module.exports = {
       return res.status(500).json({ message: "Terjadi kesalahan server" });
     }
   },
+
+  profil:async(req,res)=>{
+    const {id} = req.params
+    try {
+      const [sql] = await db.query("SELECT * FROM user WHERE id=?",[id])
+      return res.status(200).json({message:"berhasil",data:sql})
+    } catch (error) {
+      console.log(error)
+    }
+  }
 };
