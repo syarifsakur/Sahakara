@@ -16,7 +16,7 @@ const Main4 = () => {
         </h1>
         <div className="flex-grow">
           <Button
-            className="bg-blue-950 h-12 md:h-[50px] w-full md:w-auto mx-auto md:mx-0 sm:mb-8"
+            className="bg-blue-950 h-12 md:h-[50px] w-full md:w-auto mx-auto md:mx-0 mb-8 lg:mb-0"
             text="Tanyakan Sekarang"
             color="white"
           ></Button>
