@@ -8,7 +8,7 @@ import fp3 from "../../../assets/fp3.svg";
 const Main3 = () => {
   return (
     <div className="w-full py-10 flex flex-col gap-y-10 bg-gradient-to-r from-blue-950 to-red-700">
-      <h1 className="text-center text-white font-bold text-4xl">
+      <h1 className="text-center text-white font-bold lg:text-2xl sm:text-xl md:text-4xl">
         Review Pengguna Lucky Futsal
       </h1>
       <div className="mx-5 md:mx-10 flex flex-col md:flex-row gap-y-10 md:gap-y-0 md:gap-x-5 lg:gap-x-10 justify-center items-center">

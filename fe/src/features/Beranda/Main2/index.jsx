@@ -7,12 +7,12 @@ import Button from "../../../components/Button";
 
 const Main2 = () => {
   return (
-    <div className="h-lvh mx-4 sm:mx-10 my-20 poppins">
+    <div className="mx-4 sm:mx-10 my-20 poppins">
       <h1 className="flex justify-center text-xl sm:text-2xl md:text-3xl lg:text-4xl text-blue-950 font-bold">
         Kenapa Memilih Lucky Futsal?
       </h1>
       <div className="flex flex-col lg:flex-row justify-between mt-10 lg:mt-20">
-        <div className="flex flex-col lg:flex-wrap  lg:w-1/2 gap-4 lg:gap-6 md: w-full md:justify-center md:items-center sm:items-center sm:w-full ">
+        <div className="flex flex-col lg:flex-wrap lg:w-1/2 gap-4 lg:gap-6 md:w-full md:justify-center md:items-center sm:items-center sm:w-full">
           <div className="flex flex-col sm:flex-row gap-4 md:gap-x-10 lg:gap-y-6 lg:gap-x-6">
             <CardMain2
               text="Kualitas Lapangan Unggul"
@@ -25,7 +25,7 @@ const Main2 = () => {
               className="transition transform hover:-translate-y-1 hover:scale-105 duration-300 lg:mt-6"
             />
           </div>
-          <div className="flex flex-col sm:flex-row gap-4  md:gap-x-10 lg:gap-y-6 lg:gap-x-6 ">
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-x-10 lg:gap-y-6 lg:gap-x-6">
             <CardMain2
               text="Lingkungan Bersih dan Teratur"
               img={protect}
@@ -47,7 +47,7 @@ const Main2 = () => {
             oke, mampir aja ke Lucky Futsal!
           </h1>
           <Button
-            className="bg-blue-950 mt-6 md:mt-10 h-8 md:h-10 lg:h-12 w-40 lg:w-56 text-xs md:text-sm lg:text-lg hover:bg-blue-700 self-center lg:self-start"
+            className="bg-blue-950 mt-6 md:mt-10  h-8 md:h-10 lg:h-12 w-40 lg:w-56 text-xs md:text-sm lg:text-lg hover:bg-blue-700 self-center lg:self-start"
             text="Booking Sekarang"
             color="white"
           />
