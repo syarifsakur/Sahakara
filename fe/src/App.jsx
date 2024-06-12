@@ -1,11 +1,12 @@
 import MainPages from "./pages/Main"
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Register from "./pages/Register"
 import Jadwal from "./pages/Jadwal";
 import LokasiPages from "./pages/lokasi";
 import BlogPages from "./pages/blog";
 import TurnamenPages from "./pages/turnamen";
 import DetailTurnamen from "./pages/DetailTurnamen";
+import Profil from "./features/Masuk/Profil";
+import DetailBlog from "./pages/detailBlog";
 
 
 function App() {
@@ -13,12 +14,13 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPages/>}/>
-        <Route path="/Register" element={<Register/>}/>
         <Route path="/Jadwal" element={<Jadwal/>} />
         <Route path="/Lokasi" element={<LokasiPages/>} />
         <Route path="/Blog" element={<BlogPages/>} />
+        <Route path="/Blog/detail" element={<DetailBlog/>}/>
         <Route path="/Turnamen" element={<TurnamenPages/>} />
         <Route path="/Turnamen/Detail" element={<DetailTurnamen/>} />
+        <Route path="/profil" element={<Profil/>}/>
       </Routes>
     </BrowserRouter>
     

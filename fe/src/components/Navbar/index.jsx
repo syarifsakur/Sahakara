@@ -10,6 +10,7 @@ const Navbar = () => {
   const activeLinkClass = "text-red-500";
   const location = useLocation();
   const navigate = useNavigate();
+  const [isLogin,setIsLogin] = useState(false)
   const [isMobile, setIsMobile] = useState(false);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showRegisterPopup, setShowRegisterPopup] = useState(false);
@@ -17,6 +18,10 @@ const Navbar = () => {
   const toggleMobile = () => {
     setIsMobile(!isMobile);
   };
+
+  const checkLogin = () =>{
+    
+  }
 
   const handleLoginClick = () => {
     setShowRegisterPopup(false);
@@ -86,7 +91,7 @@ const Navbar = () => {
             <a
               href="/turnamen"
               className={
-                location.pathname === "/turnamen" ? activeLinkClass : ""
+                location.pathname === "/turnamen" || location.pathname === "/turnamen/detail" ? activeLinkClass : ""
               }
             >
               Turnamen
@@ -172,7 +177,9 @@ const Navbar = () => {
                 <a
                   href="/blog"
                   className={
-                    location.pathname === "/blog" ? activeLinkClass : ""
+                    location.pathname === "/blog" ||
+                     location.pathname === "/blog/detail" 
+                    ? activeLinkClass : ""
                   }
                 >
                   Blog
