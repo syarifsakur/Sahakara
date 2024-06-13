@@ -110,73 +110,87 @@ const Jadwal = () => {
 
   return (
     <>
-    <Navbar />
-    <div className="overflow-x-auto mx-auto my-8 p-4">
-      <h2 className="text-2xl text-center font-bold mb-8">
-        Jadwal dan Harga Lapangan Futsal
-      </h2>
-      <table className="min-w-full bg-white border-collapse border border-black">
-        <thead>
-          <tr className="bg-gray-200 border border-black text-center">
-            <th className="py-2 px-4 border border-black" rowSpan={2}>
-              HARI
-            </th>{" "}
-            {/* Add rowSpan attribute */}
-            <th className="py-2 px-4 border border-black" rowSpan={2}>
-              JAM
-            </th>{" "}
-            {/* Add rowSpan attribute */}
-            <th className="py-2 px-4 border border-black" colSpan="2">
-              Harga Lapangan Reguler
-            </th>
-            <th className="py-2 px-4 border border-black" colSpan="2">
-              Harga Lapangan Member
-            </th>
-            <th className="py-2 px-4 border border-black" colSpan="2">
-              Harga Lapangan Turnamen
-            </th>
-          </tr>
-          <tr className="bg-gray-200 border border-black text-center">
-            <th className="py-2 px-4 border border-black">Lapangan 1&2</th>
-            <th className="py-2 px-4 border border-black">Lapangan 3</th>
-            <th className="py-2 px-4 border border-black">Lapangan 1&2</th>
-            <th className="py-2 px-4 border border-black">Lapangan 3</th>
-            <th className="py-2 px-4 border border-black">Lapangan 1&2</th>
-            <th className="py-2 px-4 border border-black">Lapangan 3</th>
-          </tr>
-        </thead>
+      <Navbar />
+      <div className="overflow-x-auto mx-auto my-8 p-4">
+        <h2 className="text-lg sm:text-2xl lg:text-4xl text-center font-bold mb-8">
+          Jadwal dan Harga Lapangan Futsal
+        </h2>
+        <table className="min-w-full bg-white border-collapse border border-black">
+          <thead>
+            <tr className="bg-gray-200 border border-black text-center">
+              <th className="py-2 px-2 sm:px-4 border border-black" rowSpan={2}>
+                HARI
+              </th>{" "}
+              {/* Add rowSpan attribute */}
+              <th className="py-2 px-2 sm:px-4 border border-black" rowSpan={2}>
+                JAM
+              </th>{" "}
+              {/* Add rowSpan attribute */}
+              <th className="py-2 px-2 sm:px-4 border border-black" colSpan="2">
+                Harga Lapangan Reguler
+              </th>
+              <th className="py-2 px-2 sm:px-4 border border-black" colSpan="2">
+                Harga Lapangan Member
+              </th>
+              <th className="py-2 px-2 sm:px-4 border border-black" colSpan="2">
+                Harga Lapangan Turnamen
+              </th>
+            </tr>
+            <tr className="bg-gray-200 border border-black text-center">
+              <th className="py-2 px-2 sm:px-4 border border-black">
+                Lapangan 1&2
+              </th>
+              <th className="py-2 px-2 sm:px-4 border border-black">
+                Lapangan 3
+              </th>
+              <th className="py-2 px-2 sm:px-4 border border-black">
+                Lapangan 1&2
+              </th>
+              <th className="py-2 px-2 sm:px-4 border border-black">
+                Lapangan 3
+              </th>
+              <th className="py-2 px-2 sm:px-4 border border-black">
+                Lapangan 1&2
+              </th>
+              <th className="py-2 px-2 sm:px-4 border border-black">
+                Lapangan 3
+              </th>
+            </tr>
+          </thead>
 
-        <tbody>
-          {schedules.map((schedule, index) =>
-            schedule.times.map((time, timeIndex) => (
-              <tr
-                key={`${index}-${timeIndex}`}
-                className="text-center border border-black"
-              >
-                {timeIndex === 0 && (
-                  <td
-                    rowSpan={schedule.times.length}
-                    className="py-2 px-4 border border-black"
-                  >
-                    {schedule.day}
+          <tbody>
+            {schedules.map((schedule, index) =>
+              schedule.times.map((time, timeIndex) => (
+                <tr
+                  key={`${index}-${timeIndex}`}
+                  className="text-center border border-black"
+                >
+                  {timeIndex === 0 && (
+                    <td
+                      rowSpan={schedule.times.length}
+                      className="py-2 px-2 sm:px-4 border border-black"
+                    >
+                      {schedule.day}
+                    </td>
+                  )}
+                  <td className="py-2 px-2 sm:px-4 border border-black">
+                    {time}
                   </td>
-                )}
-                <td className="py-2 px-4 border border-black">{time}</td>
-                {schedule.prices[timeIndex].map((price, priceIndex) => (
-                  <td
-                    key={`${index}-${timeIndex}-${priceIndex}`}
-                    className="py-2 px-4 border border-black"
-                  >
-                    {price}
-                  </td>
-                ))}
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-    </div>
-    <Footer/>
+                  {schedule.prices[timeIndex].map((price, priceIndex) => (
+                    <td
+                      key={`${index}-${timeIndex}-${priceIndex}`}
+                      className="py-2 px-2 sm:px-4 border border-black"
+                    >
+                      {price}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
+      <Footer />
     </>
   );
 };

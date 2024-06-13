@@ -118,9 +118,7 @@ const Navbar = () => {
           <div className="flex items-center gap-x-2">
             <a
               href="/"
-              className={`flex items-center ${
-                location.pathname === "/" 
-              }`}
+              className={`flex items-center ${location.pathname === "/"}`}
             >
               <img
                 src={logo}
@@ -136,7 +134,7 @@ const Navbar = () => {
             <button className="sm:hidden w-6 h-6" onClick={toggleMobile}>
               {isMobile ? handlerOpen : handlerClose}
             </button>
-            <ul className="hidden sm:flex justify-center items-center h-14 gap-x-4 lg:gap-x-12 text-xs lg:text-xl md:text-base sm:text-sm">
+            <ul className="hidden sm:flex justify-center items-center h-14 gap-x-4 lg:gap-x-6 text-xs lg:text-xl md:text-base sm:text-sm">
               <li>
                 <a
                   href="/"
@@ -191,23 +189,18 @@ const Navbar = () => {
                   Turnamen
                 </a>
               </li>
-              <li className="flex flex-col items-center">
-                <div className="bg-white rounded-full flex items-center justify-center p-0">
-                  <img
-                    src={profil}
-                    alt="Login Icon"
-                    className="w-8 h-8 rounded-full"
-                  />
+              <li>
+                <div className="border px-4 items-center justify-center rounded ">
+                  <a
+                    href="#"
+                    onClick={handleLoginClick}
+                    className={
+                      location.pathname === "/profil" ? activeLinkClass : ""
+                    }
+                  >
+                    Masuk
+                  </a>
                 </div>
-                <a
-                  href="#"
-                  onClick={handleLoginClick}
-                  className={
-                    location.pathname === "/profil" ? activeLinkClass : ""
-                  }
-                >
-                  Masuk
-                </a>
               </li>
             </ul>
           </div>
