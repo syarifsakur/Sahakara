@@ -2,7 +2,6 @@ const db = require("../config/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-
 module.exports = {
   tes: async (req, res) => {
     res.send("halo");
@@ -10,11 +9,20 @@ module.exports = {
   },
 
   register: async (req, res) => {
-    const { email, katasandi,nama,birthdate,alamat, kontak } = req.body;
-    const foto = req.file
+    const { email, katasandi,nama,birthdate } = req.body;
+    // const foto = req.file
 
-    if (!email || !katasandi || !kontak || !foto ||!nama||!birthdate||!alamat) {
+    if (!email ) {
       return res.status(404).json({ message: "harus di isi semua" });
+    }
+    if (!nama ) {
+      return res.status(404).json({ message: "harus di isi semua nama" });
+    }
+    if (!katasandi ) {
+      return res.status(404).json({ message: "harus di isi semua awkawokawok katasanadi" });
+    }
+    if (!birthdate ) {
+      return res.status(404).json({ message: "harus di isi semua birthdate" });
     }
     if (katasandi.length < 8) {
       return res.status(404).json({ message: "password minimal 8 karakter" });
@@ -31,11 +39,11 @@ module.exports = {
         return res.status(402).json({ message: "email sudah terdaftar" });
       }
       const hashPassword = await bcrypt.hash(katasandi, 10);
-      const fotoPath = `${req.protocol}://${req.get('host')}/${foto.path}`;
-      const fotos = fotoPath.replace(/\\/g, '/')
+      // const fotoPath = `${req.protocol}://${req.get('host')}/${foto.path}`;
+      // const fotos = fotoPath.replace(/\\/g, '/')
       const data = await db.query(
-        "INSERT INTO user(email, katasandi,nama,foto,birthDate,alamat, kontak) VALUES(?, ?, ?,?,?,?,?)",
-        [email, hashPassword, nama,fotos,birthdate,alamat,kontak]
+        "INSERT INTO user(email, katasandi,nama,birthDate) VALUES(?, ?,?,?)",
+        [email, hashPassword, nama,birthdate]
       );
       return res
         .status(201)
@@ -76,7 +84,7 @@ module.exports = {
           id: user[0].id,
         },
         "qwertyuiop",
-        { expiresIn: "10s" }
+        { expiresIn: "1d" }
       );
 
       res.cookie("token",token,{

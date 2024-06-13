@@ -6,7 +6,7 @@ const RegisterPopup = ({ onClose, onSignInClick }) => {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [password, setPassword] = useState("");
+  const [kataSandi, setkataSandi] = useState("");
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
@@ -14,19 +14,20 @@ const RegisterPopup = ({ onClose, onSignInClick }) => {
   const handleRegister = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:2000/register", {
+      .post("http://localhost:2003/register", {
         email,
-        firstName,
-        lastName,
-        password,
-        dateOfBirth: `${year}-${month}-${day}`,
+        nama:`${firstName} ${lastName}`,
+        katasandi:kataSandi,
+        birthdate: `${day}-${month}-${year}`,
       })
       .then((response) => {
         console.log(response.data);
         onClose();
+        alert("registrasi berhasil")
       })
       .catch((error) => {
         console.error("Error:", error);
+        alert(error.response.data.message)
       });
   };
 
@@ -109,15 +110,15 @@ const RegisterPopup = ({ onClose, onSignInClick }) => {
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="password"
             >
-              Password
+              password
             </label>
             <input
               type="password"
               id="password"
               name="password"
               className="w-full px-3 py-2 border rounded bg-gray-200"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={kataSandi}
+              onChange={(e) => setkataSandi(e.target.value)}
               required
             />
           </div>
@@ -156,11 +157,11 @@ const RegisterPopup = ({ onClose, onSignInClick }) => {
             <span className="block text-gray-700 text-sm mb-2">
               By clicking create account, I agree that I have read and accepted
               the{" "}
-              <a href="#" className="text-blue-500 hover:underline">
+              <a href="/" className="text-blue-500 hover:underline">
                 terms of use
               </a>{" "}
               and{" "}
-              <a href="#" className="text-blue-500 hover:underline">
+              <a href="/" className="text-blue-500 hover:underline">
                 privacy policy
               </a>
               .

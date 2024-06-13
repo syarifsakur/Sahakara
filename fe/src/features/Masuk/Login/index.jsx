@@ -1,21 +1,27 @@
 import { useState } from "react";
 import axios from "axios";
 import close from "../../../assets/close.svg";
+import Cookies from 'js-cookie';
 
 const LoginPopup = ({ onClose, onSignUpClick }) => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [katasandi, setkatasandi] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:2000/login", { email, password })
+      .post("http://localhost:2003/login", { email, katasandi })
       .then((response) => {
         console.log(response.data);
         onClose();
+        alert(response.data.message)
+        if(response.data.token){
+          Cookies.set('token', response.data.token, { expires: 1 }); // Set expires to 1 day
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
+        alert(error.response.data.message)
       });
   };
 
@@ -64,18 +70,18 @@ const LoginPopup = ({ onClose, onSignUpClick }) => {
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password"
+              htmlFor="katasandi"
             >
-              Password
+              katasandi
             </label>
             <input
               type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
+              id="katasandi"
+              name="katasandi"
+              placeholder="Enter your katasandi"
               className="w-full px-3 py-2 border rounded bg-gray-200"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={katasandi}
+              onChange={(e) => setkatasandi(e.target.value)}
               required
             />
           </div>
@@ -85,7 +91,7 @@ const LoginPopup = ({ onClose, onSignUpClick }) => {
               <span className="ml-2 text-gray-700 text-sm">Remember me</span>
             </label>
             <a href="#" className="text-blue-500 text-sm hover:underline">
-              Forgot password?
+              Forgot katasandi?
             </a>
           </div>
           <div className="flex items-center justify-center w-full">

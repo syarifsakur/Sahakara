@@ -11,7 +11,7 @@ const FeatKontenBlog = () => {
   const fetchData = async () => {
     try {
       const res = await getBerita();
-      setBerita(res?.data?.articles);
+      setBerita(res?.data?.blog);
     } catch (error) {
       console.log(error);
     }
@@ -27,12 +27,12 @@ const FeatKontenBlog = () => {
         {berita?.map((k, index) => (
           <CardBlog
             key={index}
-            link={k.url}
-            judul={k.title}
-            deskripsi={k.description}
+            link="/blog/detail"
+            judul={k.judul}
+            deskripsi={k.deskripsi}
             pemilik={k.author}
-            ttl={k.publishedAt}
-            foto={k.urlToImage}
+            ttl={k.created_at}
+            foto={k.foto}
           ></CardBlog>
         ))}
       </div>
