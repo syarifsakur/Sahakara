@@ -5,8 +5,30 @@ import lokasi from "../../../assets/Vector2.svg";
 import icon from "../../../assets/3.svg";
 import waktu from "../../../assets/4.svg";
 import map from "../../../assets/5.svg";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getDetailTurnamen } from "../../../services/detailTurnamen";
 
 const FeatDetailTurnamen = () => {
+  const { id } = useParams();
+  const [tur, setTur] = useState(null);
+
+  const fetchData = async () => {
+    try {
+      const res = await getDetailTurnamen(id);
+      setTur(res?.data?.turnamen);
+      console.log(res?.data?.turnamen[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log(tur)
+
+
+  useEffect(() => {
+    fetchData();
+  }, [id]);
+
   return (
     <div className="mb-10">
       <div className="flex flex-col justify-center">

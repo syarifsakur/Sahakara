@@ -2,9 +2,9 @@ import jadwal from "../../../assets/jadwal.svg"
 import ball from "../../../assets/ball.svg"
 import lokasi from "../../../assets/lokasiTurnamen.svg"
 
-const CardTurnamen = ({foto,judul,ttl,kategori,alamat,penyelanggara}) => {
+const CardTurnamen = ({link,foto,judul,ttl,kategori,alamat,penyelanggara}) => {
   return (
-    <a href="/turnamen/detail">
+    <a href={link}>
       <div className="h-[300px] lg:h-[500px] rounded-3xl shadow-2xl">
         <img
           src={foto}

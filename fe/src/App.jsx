@@ -17,9 +17,9 @@ function App() {
         <Route path="/Jadwal" element={<Jadwal/>} />
         <Route path="/Lokasi" element={<LokasiPages/>} />
         <Route path="/Blog" element={<BlogPages/>} />
-        <Route path="/Blog/detail" element={<DetailBlog/>}/>
+        <Route path="/Blog/detail/:id" element={<DetailBlog/>}/>
         <Route path="/Turnamen" element={<TurnamenPages/>} />
-        <Route path="/Turnamen/Detail" element={<DetailTurnamen/>} />
+        <Route path="/Turnamen/Detail/:id" element={<DetailTurnamen/>} />
         <Route path="/profil" element={<Profil/>}/>
       </Routes>
     </BrowserRouter>

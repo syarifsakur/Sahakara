@@ -12,6 +12,7 @@ const FeatKontenBlog = () => {
     try {
       const res = await getBerita();
       setBerita(res?.data?.blog);
+      console.log(res)
     } catch (error) {
       console.log(error);
     }
@@ -20,6 +21,9 @@ const FeatKontenBlog = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  if (!berita) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="mt-16 lg:mt-40 ">
@@ -27,7 +31,7 @@ const FeatKontenBlog = () => {
         {berita?.map((k, index) => (
           <CardBlog
             key={index}
-            link="/blog/detail"
+            link={`/blog/detail/${k.id}`}
             judul={k.judul}
             deskripsi={k.deskripsi}
             pemilik={k.author}

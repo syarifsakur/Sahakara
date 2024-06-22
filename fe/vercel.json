@@ -20,7 +20,7 @@
         "src": "/Turnamen",
         "dest": "/"
       },      {
-        "src": "/Turnamen/Detail",
+        "src": "/Turnamen/Detail/:id",
         "dest": "/"
       }
 
