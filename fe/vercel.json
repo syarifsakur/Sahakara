@@ -17,11 +17,15 @@
         "dest": "/"
       },
       {
+        "src": "/Blog/detail/:id",
+        "dest": "/blog/[id]"
+      },
+      {
         "src": "/Turnamen",
         "dest": "/"
       },      {
         "src": "/Turnamen/Detail/:id",
-        "dest": "/"
+        "dest": "/turnamen/[id]"
       }
 
   ]
