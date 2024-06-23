@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-port = 2003
+require("dotenv").config()
 const router= require("./routes/auth")
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
@@ -16,6 +16,6 @@ app.use("/public/upload", express.static("public/upload"))
 
 
 
-app.listen(port,()=>{
-    console.log("berhasil berjalan server di port",port)
+app.listen(process.env.PORT,()=>{
+    console.log("berhasil berjalan server di port",process.env.PORT)
 })

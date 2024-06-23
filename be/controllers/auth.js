@@ -84,7 +84,7 @@ module.exports = {
           id: user[0].id,
         },
         "qwertyuiop",
-        { expiresIn: "1d" }
+        { expiresIn: "20s" }
       );
 
       res.cookie("token",token,{
