@@ -21,7 +21,7 @@ const LokasiPages = () => {
           ></iframe>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

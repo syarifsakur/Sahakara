@@ -1,6 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import profil from "../../assets/profil.svg";
 import hamburger from "../../assets/hamburger.svg";
 import { useEffect, useState } from "react";
 import LoginPopup from "../../features/Masuk/Login";
