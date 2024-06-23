@@ -1,4 +1,4 @@
-CREATE DATABASE mtfs;
+CREATE DATABASE tfs;
 USE mato;
 
 CREATE TABLE `user` (
