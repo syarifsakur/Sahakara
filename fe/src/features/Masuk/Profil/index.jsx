@@ -1,71 +1,82 @@
-import { useState } from "react";
+// Profile.js
+import React from "react";
+import { useAuth } from "./AuthContext";
 
-const Profil = () => {
-  const { user, setUser } = useAuth();
-  const [profileImage, setProfileImage] = useState(user.profileImage || "");
-  const [username, setUsername] = useState(user.username || "");
-  const [email, setEmail] = useState(user.email || "");
+const Profile = () => {
+  const { user } = useAuth();
 
-  const handleProfileUpdate = (e) => {
-    e.preventDefault();
-    // Logic to handle profile update, and update user context
-    setUser({ ...user, profileImage, username, email });
-    console.log("Profile updated:", { profileImage, username, email });
-  };
+  if (!user) {
+    return <p>You need to login to view this page.</p>;
+  }
 
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Profil Saya</h2>
-      <form onSubmit={handleProfileUpdate}>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Profile Image
-          </label>
-          <input
-            type="file"
-            onChange={(e) =>
-              setProfileImage(URL.createObjectURL(e.target.files[0]))
-            }
+      <div className="bg-white shadow-md rounded-lg p-6">
+        <h1 className="text-2xl font-bold text-center mb-6">
+          Halo {user.name}!
+        </h1>
+        <div className="flex justify-center mb-6">
+          <img
+            src={profileImage}
+            alt="Profile"
+            className="rounded-full w-32 h-32"
           />
-          {profileImage && (
-            <img
-              src={profileImage}
-              alt="Profile"
-              className="mt-4 w-32 h-32 rounded-full"
+        </div>
+        <form className="space-y-4">
+          <div>
+            <label className="block text-gray-700">Nama</label>
+            <input
+              type="text"
+              name="name"
+              value={user.name}
+              className="w-full px-4 py-2 border rounded-lg"
+              readOnly
             />
-          )}
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Username
-          </label>
-          <input
-            type="text"
-            className="w-full px-3 py-2 border rounded"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            className="w-full px-3 py-2 border rounded"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Update Profile
-        </button>
-      </form>
+          </div>
+          <div>
+            <label className="block text-gray-700">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={user.email}
+              className="w-full px-4 py-2 border rounded-lg"
+              readOnly
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700">Tanggal Lahir</label>
+            <input
+              type="text"
+              name="birthdate"
+              value={user.birthdate}
+              className="w-full px-4 py-2 border rounded-lg"
+              readOnly
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700">Alamat</label>
+            <input
+              type="text"
+              name="address"
+              value={user.address}
+              className="w-full px-4 py-2 border rounded-lg"
+              readOnly
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700">No Handphone</label>
+            <input
+              type="text"
+              name="phone"
+              value={user.phone}
+              className="w-full px-4 py-2 border rounded-lg"
+              readOnly
+            />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default Profil;
+export default Profile;

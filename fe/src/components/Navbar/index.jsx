@@ -1,6 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import profil from "../../assets/profil.svg";
 import hamburger from "../../assets/hamburger.svg";
 import { useState } from "react";
 import LoginPopup from "../../features/Masuk/Login";
@@ -10,7 +9,7 @@ const Navbar = () => {
   const activeLinkClass = "text-red-500";
   const location = useLocation();
   const navigate = useNavigate();
-  const [isLogin,setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showRegisterPopup, setShowRegisterPopup] = useState(false);
@@ -19,9 +18,7 @@ const Navbar = () => {
     setIsMobile(!isMobile);
   };
 
-  const checkLogin = () =>{
-    
-  }
+  const checkLogin = () => {};
 
   const handleLoginClick = () => {
     setShowRegisterPopup(false);
@@ -91,7 +88,10 @@ const Navbar = () => {
             <a
               href="/turnamen"
               className={
-                location.pathname === "/turnamen" || location.pathname === "/turnamen/detail" ? activeLinkClass : ""
+                location.pathname === "/turnamen" ||
+                location.pathname === "/turnamen/detail"
+                  ? activeLinkClass
+                  : ""
               }
             >
               Turnamen
@@ -176,8 +176,9 @@ const Navbar = () => {
                   href="/blog"
                   className={
                     location.pathname === "/blog" ||
-                     location.pathname === "/blog/detail" 
-                    ? activeLinkClass : ""
+                    location.pathname === "/blog/detail"
+                      ? activeLinkClass
+                      : ""
                   }
                 >
                   Blog
