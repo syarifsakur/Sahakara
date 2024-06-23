@@ -1,9 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import hamburger from "../../assets/hamburger.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginPopup from "../../features/Masuk/Login";
 import RegisterPopup from "../../features/Masuk/Register";
+import Cookies from "js-cookie";
 
 const Navbar = () => {
   const activeLinkClass = "text-red-500";
@@ -20,6 +21,12 @@ const Navbar = () => {
 
   const checkLogin = () => {};
 
+  useEffect(() => {
+    // Cek status login pengguna dari cookies
+    const authToken = Cookies.get("token");
+    console.log(authToken)
+    setIsLogin(authToken);
+  }, []);
   const handleLoginClick = () => {
     setShowRegisterPopup(false);
     setShowLoginPopup(true);
@@ -189,7 +196,7 @@ const Navbar = () => {
                   href="/turnamen"
                   className={
                     location.pathname === "/turnamen" ||
-                    location.pathname === "/turnamen/detail"
+                    location.pathname === "/turnamen/detail/"
                       ? activeLinkClass
                       : ""
                   }
@@ -199,15 +206,26 @@ const Navbar = () => {
               </li>
               <li>
                 <div className="border px-4 items-center justify-center rounded ">
-                  <a
-                    href="#"
-                    onClick={handleLoginClick}
-                    className={
-                      location.pathname === "/profil" ? activeLinkClass : ""
-                    }
-                  >
-                    Masuk
-                  </a>
+                {isLogin ? (
+          <a
+            href="/profil"
+            className={
+              location.pathname === '/profil' ? activeLinkClass : ''
+            }
+          >
+            Profil
+          </a>
+        ) : (
+          <a
+            href="#"
+            onClick={handleLoginClick}
+            className={
+              location.pathname === '/login' ? activeLinkClass : ''
+            }
+          >
+            Masuk
+          </a>
+        )}
                 </div>
               </li>
             </ul>
