@@ -1,11 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
 import close from "../../../assets/close.svg";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
-const LoginPopup = ({ onClose, onSignUpClick }) => {
+const LoginPopup = ({ onClose, onSignUpClick, setUser }) => {
   const [email, setEmail] = useState("");
   const [katasandi, setkatasandi] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -14,14 +16,17 @@ const LoginPopup = ({ onClose, onSignUpClick }) => {
       .then((response) => {
         console.log(response.data);
         onClose();
-        alert(response.data.message)
-        if(response.data.token){
-          Cookies.set('token', response.data.token, { expires: 1 }); // Set expires to 1 day
+        alert(response.data.message);
+        if (response.data.token) {
+          Cookies.set("token", response.data.token, { expires: 1 }); // Set expires to 1 day
+          Cookies.set("user", response.data.user, { expires: 1 }); // Save user information
+          setUser(response.data.user);
+          navigate("/profil"); // Redirect to profile page
         }
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert(error.response.data.message)
+        alert(error.response.data.message);
       });
   };
 
