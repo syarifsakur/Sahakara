@@ -1,7 +1,7 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import hamburger from "../../assets/hamburger.svg";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import LoginPopup from "../../features/Masuk/Login";
 import RegisterPopup from "../../features/Masuk/Register";
 import Cookies from "js-cookie";
@@ -16,12 +16,24 @@ const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showRegisterPopup, setShowRegisterPopup] = useState(false);
+<<<<<<< HEAD
   const [profil,setProfil] = useState(null)
+=======
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const savedUser = Cookies.get("user");
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
+>>>>>>> d0f81c6cf6d5bf4ca6fa1c27230e560abbaa1dc5
 
   const toggleMobile = () => {
     setIsMobile(!isMobile);
   };
 
+<<<<<<< HEAD
   const fetchData = async () => {
     try {
       const res = await getProfil();
@@ -40,6 +52,8 @@ const Navbar = () => {
     console.log(authToken)
     setIsLogin(authToken);
   }, []);
+=======
+>>>>>>> d0f81c6cf6d5bf4ca6fa1c27230e560abbaa1dc5
   const handleLoginClick = () => {
     setShowRegisterPopup(false);
     setShowLoginPopup(true);
@@ -48,6 +62,13 @@ const Navbar = () => {
   const handleRegisterClick = () => {
     setShowLoginPopup(false);
     setShowRegisterPopup(true);
+  };
+
+  const handleLogout = () => {
+    Cookies.remove("token");
+    Cookies.remove("user");
+    setUser(null);
+    navigate("/");
   };
 
   const handlerClose = (
@@ -118,18 +139,32 @@ const Navbar = () => {
             </a>
           </li>
           <li className="flex flex-row items-center gap-2 mt-4">
-            <button
-              className="bg-blue-700 hover:bg-red-500 text-white px-3 py-2 rounded text-xs"
-              onClick={handleLoginClick}
-            >
-              Login
-            </button>
-            <button
-              className="bg-blue-700 hover:bg-red-500 text-white px-3 py-2 rounded text-xs"
-              onClick={handleRegisterClick}
-            >
-              Signup
-            </button>
+            {user ? (
+              <>
+                <span className="text-white">{user.name.slice(0, 3)}</span>
+                <button
+                  className="bg-red-500 hover:bg-blue-700 text-white px-3 py-2 rounded text-xs"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  className="bg-blue-700 hover:bg-red-500 text-white px-3 py-2 rounded text-xs"
+                  onClick={handleLoginClick}
+                >
+                  Login
+                </button>
+                <button
+                  className="bg-blue-700 hover:bg-red-500 text-white px-3 py-2 rounded text-xs"
+                  onClick={handleRegisterClick}
+                >
+                  Signup
+                </button>
+              </>
+            )}
           </li>
         </ul>
       </div>
@@ -209,7 +244,7 @@ const Navbar = () => {
                   href="/turnamen"
                   className={
                     location.pathname === "/turnamen" ||
-                    location.pathname === "/turnamen/detail/"
+                    location.pathname === "/turnamen/detail"
                       ? activeLinkClass
                       : ""
                   }
@@ -218,28 +253,29 @@ const Navbar = () => {
                 </a>
               </li>
               <li>
-                <div className="border px-4 items-center justify-center rounded ">
-                {isLogin ? (
-          <a
-            href="/profil"
-            className={
-              location.pathname === '/profil' ? activeLinkClass : ''
-            }
-          >
-            Profil
-          </a>
-        ) : (
-          <a
-            href="#"
-            onClick={handleLoginClick}
-            className={
-              location.pathname === '/login' ? activeLinkClass : ''
-            }
-          >
-            Masuk
-          </a>
-        )}
-                </div>
+                {user ? (
+                  <div className="border px-4 items-center justify-center rounded">
+                    <span className="text-white">{user.name.slice(0, 3)}</span>
+                    <button
+                      className="bg-red-500 hover:bg-blue-700 text-white px-3 py-2 rounded text-xs"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </button>
+                  </div>
+                ) : (
+                  <div className="border px-4 items-center justify-center rounded">
+                    <a
+                      href="#"
+                      onClick={handleLoginClick}
+                      className={
+                        location.pathname === "/profil" ? activeLinkClass : ""
+                      }
+                    >
+                      Masuk
+                    </a>
+                  </div>
+                )}
               </li>
             </ul>
           </div>
@@ -249,6 +285,7 @@ const Navbar = () => {
         <LoginPopup
           onClose={() => setShowLoginPopup(false)}
           onSignUpClick={handleRegisterClick}
+          setUser={setUser}
         />
       )}
       {showRegisterPopup && (

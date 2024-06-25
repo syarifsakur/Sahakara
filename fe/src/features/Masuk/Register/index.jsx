@@ -10,25 +10,30 @@ const RegisterPopup = ({ onClose, onSignInClick }) => {
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
+  const [error, setError] = useState("");
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:2003/register", {
+    try {
+      const response = await axios.post("http://localhost:2003/register", {
         email,
-        nama:`${firstName} ${lastName}`,
-        katasandi:kataSandi,
+        nama: `${firstName} ${lastName}`,
+        katasandi: kataSandi,
         birthdate: `${day}-${month}-${year}`,
-      })
-      .then((response) => {
-        console.log(response.data);
-        onClose();
-        alert("registrasi berhasil")
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert(error.response.data.message)
       });
+      console.log(response.data);
+      onClose();
+      alert("Registration successful");
+    } catch (error) {
+      console.error("Error:", error);
+      if (error.response && error.response.data) {
+        setError(error.response.data.message);
+        alert(error.response.data.message);
+      } else {
+        setError("Network error: Unable to connect to the server.");
+        alert("Network error: Unable to connect to the server.");
+      }
+    }
   };
 
   return (
@@ -38,7 +43,7 @@ const RegisterPopup = ({ onClose, onSignInClick }) => {
           className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
           onClick={onClose}
         >
-          <img src={close} alt="" className="w-6 h-6" />
+          <img src={close} alt="Close" className="w-6 h-6" />
         </button>
         <h2 className="text-2xl font-bold mb-4">Create an account</h2>
         <span className="block text-gray-400 text-sm mb-4">
@@ -51,6 +56,7 @@ const RegisterPopup = ({ onClose, onSignInClick }) => {
             Sign in
           </a>
         </span>
+        {error && <p className="text-red-500 mb-4">{error}</p>}
         <form onSubmit={handleRegister}>
           <div className="mb-4">
             <label
@@ -110,7 +116,7 @@ const RegisterPopup = ({ onClose, onSignInClick }) => {
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="password"
             >
-              password
+              Password
             </label>
             <input
               type="password"
