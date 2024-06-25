@@ -84,7 +84,7 @@ module.exports = {
           id: user[0].id,
         },
         "qwertyuiop",
-        { expiresIn: "20s" }
+        { expiresIn: "1d" }
       );
 
       res.cookie("token",token,{
@@ -104,12 +104,12 @@ module.exports = {
   },
 
   profil:async(req,res)=>{
-    const {id} = req.params
+    const {id:id} = req.akun;
     try {
-      const [sql] = await db.query("SELECT * FROM user WHERE id=?",[id])
-      return res.status(200).json({message:"berhasil",data:sql})
+      const sql = await db.query("SELECT * FROM user WHERE id=?",[id])
+      return res.status(200).json({message:"berhasil",data:sql[0]})
     } catch (error) {
-      console.log(error)
+      return res.status(500).json({message:"internal server error"})
     }
   }
 };

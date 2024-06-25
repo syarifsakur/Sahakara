@@ -2,7 +2,7 @@ const db = require("../config/db");
 
 module.exports = {
   addTurnamen: async (req, res) => {
-    const { judul, deskripsi, biaya, date } = req.body;
+    const { judul, deskripsi, biaya, date ,penyelenggara} = req.body;
     const foto = req.file;
     const { id } = req.params;
     if (!judul || !deskripsi || !biaya || !date || !foto) {
@@ -13,7 +13,7 @@ module.exports = {
       const fotos = fotoPath.replace(/\\/g, "/");
       const turnamen = await db.query(
         "INSERT INTO turnamen(judul,deskripsi,author,lokasi,foto,biaya_pendaftaran,date) VALUES (?,?,?,?,?,?,?)",
-        [judul, deskripsi, id, "  Jl. Raya Kedung Baruk, Sempaja Selatan, Samarinda Utara, Kota Samarinda", fotos, biaya, date]
+        [judul, deskripsi, penyelenggara, "  Jl. Raya Kedung Baruk, Sempaja Selatan, Samarinda Utara, Kota Samarinda", fotos, biaya, date]
       );
       return res
         .status(201)
@@ -48,6 +48,16 @@ module.exports = {
       .json({
         message:"internal server error"
       })
+    }
+  },
+  delete:async(req,res)=>{
+    try {
+      const tur = await db.query(
+        "DELETE FROM blog"
+      )
+      return res.status(200).json({message:"berhsil di hapus"})
+    } catch (error) {
+      return res.status(500).json({message:"internal server error"})
     }
   }
 };

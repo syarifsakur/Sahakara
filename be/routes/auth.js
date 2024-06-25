@@ -9,7 +9,7 @@ const upload = require("../middlewares/upload")
 router.get("/",authController.tes)
 router.post("/register",upload.single("foto"),authController.register)
 router.post("/login",authController.login)
-router.get("/profil/:id",verify,authController.profil)
+router.get("/profil",verify,authController.profil)
 
 router.post("/blog",upload.single("foto"),blogController.addBlog)
 router.get("/blog",blogController.getBlog)
@@ -18,5 +18,6 @@ router.get("/blog/:id",blogController.blogId)
 router.post("/turnamen/:id",verify,upload.single("foto"),turController.addTurnamen)
 router.get("/turnamen",turController.getTurnamen)
 router.get("/turnamen/:id",turController.turnamenId)
+router.delete("/turnamen",turController.delete)
 
 module.exports = router
