@@ -19,6 +19,11 @@ const FeatKontenTurnamen = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  
+
+  if (!turnamen) {
+    return <div className="h-screen flex justify-center items-center">turnamen belum ada!</div>;
+  }
   return (
     <div className="mt-14 lg:mt-36">
       <div className="flex w-full items-center gap-2 lg:gap-8 px-10">

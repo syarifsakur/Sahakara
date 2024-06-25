@@ -1,10 +1,35 @@
 // Profile.js
-import React from "react";
+import { useEffect, useState } from "react";
+import { getProfil } from "../../../services/profil";
+import Cookies from "js-cookie";
 
 const Profile = () => {
-  const { user } = useAuth();
+  const [profil,setProfil] = useState()
+  
+  const fetchData = async () => {
+    try {
+      const authToken = Cookies.get("token");
+      if(!authToken){
+        return <p>You need to login to view this page.</p>;
+      }
+      const res = await getProfil(authToken);
+      setProfil(res?.data[0]);
+      console.log(res?.data[0].nama)
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  if (!user) {
+  console.log(profil)
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if(!profil){
+    return <p>titdak ada profil</p>
+  }
+
+  if(!fetchData){
     return <p>You need to login to view this page.</p>;
   }
 
@@ -12,11 +37,11 @@ const Profile = () => {
     <div className="container mx-auto p-4">
       <div className="bg-white shadow-md rounded-lg p-6">
         <h1 className="text-2xl font-bold text-center mb-6">
-          Halo {user.name}!
+          Halo {profil.nama} !
         </h1>
         <div className="flex justify-center mb-6">
           <img
-            src={profileImage}
+            src={profil.foto}
             alt="Profile"
             className="rounded-full w-32 h-32"
           />
@@ -27,7 +52,7 @@ const Profile = () => {
             <input
               type="text"
               name="name"
-              value={user.name}
+              value={profil.nama}
               className="w-full px-4 py-2 border rounded-lg"
               readOnly
             />
@@ -37,7 +62,7 @@ const Profile = () => {
             <input
               type="email"
               name="email"
-              value={user.email}
+              value={profil.email}
               className="w-full px-4 py-2 border rounded-lg"
               readOnly
             />
@@ -47,7 +72,7 @@ const Profile = () => {
             <input
               type="text"
               name="birthdate"
-              value={user.birthdate}
+              value={profil.birthDate}
               className="w-full px-4 py-2 border rounded-lg"
               readOnly
             />
@@ -57,7 +82,7 @@ const Profile = () => {
             <input
               type="text"
               name="address"
-              value={user.address}
+              value={profil.alamat}
               className="w-full px-4 py-2 border rounded-lg"
               readOnly
             />
@@ -67,7 +92,7 @@ const Profile = () => {
             <input
               type="text"
               name="phone"
-              value={user.phone}
+              value={profil.kontak}
               className="w-full px-4 py-2 border rounded-lg"
               readOnly
             />

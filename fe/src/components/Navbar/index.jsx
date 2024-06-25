@@ -1,12 +1,14 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import hamburger from "../../assets/hamburger.svg";
 import { useEffect, useState } from "react";
 import LoginPopup from "../../features/Masuk/Login";
 import RegisterPopup from "../../features/Masuk/Register";
 import Cookies from "js-cookie";
+import { getProfil } from "../../services/profil";
 
 const Navbar = () => {
+  const {id} = useParams()
   const activeLinkClass = "text-red-500";
   const location = useLocation();
   const navigate = useNavigate();
@@ -14,15 +16,26 @@ const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showRegisterPopup, setShowRegisterPopup] = useState(false);
+  const [profil,setProfil] = useState(null)
 
   const toggleMobile = () => {
     setIsMobile(!isMobile);
   };
 
+  const fetchData = async () => {
+    try {
+      const res = await getProfil();
+      setProfil(res?.data?.blog);
+      // console.log(berita);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const checkLogin = () => {};
 
   useEffect(() => {
     // Cek status login pengguna dari cookies
+    fetchData()
     const authToken = Cookies.get("token");
     console.log(authToken)
     setIsLogin(authToken);

@@ -8,30 +8,44 @@ import map from "../../../assets/5.svg";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getDetailTurnamen } from "../../../services/detailTurnamen";
+import { getTurnamen } from "../../../services/turnamen";
+import CardTurnamen from "../../../components/card/Turnamen";
 
 const FeatDetailTurnamen = () => {
   const { id } = useParams();
   const [tur, setTur] = useState(null);
+  const [tes,setTes] = useState(null)
 
   const fetchData = async () => {
     try {
       const res = await getDetailTurnamen(id);
-      setTur(res?.data?.turnamen);
+      setTur(res?.data?.turnamen[0]);
       console.log(res?.data?.turnamen[0]);
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(tur)
-
+  const fetchDataAll = async () =>{
+    try {
+      const res = await getTurnamen()
+      setTes(res?.data?.turnamen)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+console.log(tes)
 
   useEffect(() => {
     fetchData();
+    fetchDataAll()
   }, [id]);
+  if (!tur) {
+    return <div className="h-screen flex justify-center items-center">Loading...</div>;
+  }
 
   return (
     <div className="mb-10">
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center ">
         <img src={bg} alt="" className="w-full h-32 lg:h-64" />
         <div className="w-full flex flex-col  lg:gap-y-4 px-10 -mt-28 lg:-mt-48 text-blue-950 poppins">
           <div className="flex w-full items-center">
@@ -61,8 +75,7 @@ const FeatDetailTurnamen = () => {
               Tentang Kompetisi
             </h1>
             <p className="max-w-full">
-              Insevent kembali diadakan dengan hadih uang tunai Rp.2.000.000.
-              Segera daftar dan menangkan Insevent.
+              {tur.deskripsi}
             </p>
           </div>
           <div className="flex flex-col gap-y-2">
@@ -89,9 +102,9 @@ const FeatDetailTurnamen = () => {
             />
           </div>
         </div>
-        <div className="w-full flex items-center justify-end">
+        <div className="w-full h-[750px] flex items-center justify-end">
           <div className="bg-blue-950 text-white lg:w-[75%] lg:h-[70%] w-40 h-96 lg:px-8 px-4 py-3 lg:py-6 flex flex-col gap-1 rounded-2xl">
-            <h2 className="text-sm lg:text-2xl font-bold">RP. 135.000/ Club</h2>
+            <h2 className="text-sm lg:text-2xl font-bold">RP.{tur.biaya_pendaftaran}/ Club</h2>
             <p className="text-xs lg:text-xl">Slot terbatas !</p>
             <p className="text-xs lg:text-xl">Hubungi Lucky Futsal Untuk Mendaftar</p>
             <Button
@@ -110,22 +123,40 @@ const FeatDetailTurnamen = () => {
               <img src={waktu} alt="" className="h-6 lg:h-10" />
               <div>
                 <h1 className="text-xs lg:text-2xl font-bold">Waktu & Tanggal</h1>
-                <p className="text-xs lg:text-[16px]">Selasa, 3 Oktober 2023 19:00</p>
+                <p className="text-xs lg:text-[16px]">{tur.date}</p>
               </div>
             </div>
             <div className="flex items-center gap-3 my-2">
               <img src={map} alt="" className="h-6 lg:h-10" />
               <div>
                 <h1 className="text-xs lg:text-2xl font-bold">Lapangan</h1>
-                <p className="text-xs lg:text-[16px] line-clamp-4">
-                  Jl. Raya Kedung Baruk, Sempaja Selatan, Samarinda Utara, Kota
-                  Samarinda
+                <p className="text-xs lg:text-[16px] ll. Raya Kedung Baruk, Sempaja Selatan, Samarinda Utara, Kota
+                  Samarindaine-clamp-4">
+                  {tur.lokasi}
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div>
+        <h3 className="font-bold text-3xl w-full px-10 my-10">turnamen lainnya</h3>
+      </div>
+      <div className="m-10 lg:m-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
+        {tes?.filter((k)=>k.id != id).slice(0,4).map((k, index) => ( 
+          <CardTurnamen
+            key={index}
+            link={`/turnamen/detail/${k.id}`}
+            foto={k.foto}
+            judul={k.judul}
+            ttl={k.date}
+            kategori="futsal"
+            alamat={k.lokasi}
+            penyelanggara={k.author}
+          ></CardTurnamen>
+        ))}
+      </div>
+
     </div>
   );
 };

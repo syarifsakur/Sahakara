@@ -12,7 +12,7 @@ const Main = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 4000);
+    }, 1500);
     return () => clearInterval(interval);
   }, []);
 

@@ -43,7 +43,7 @@ const FeatDetailBlog = () => {
   return (
     <div className="w-full px-10 flex flex-col gap-y-10 py-8 poppins text-blue-950">
       <div className="w-full flex flex-col items-center gap-y-6">
-        <h3 className="text-3xl font-bold">{berita[0]?.judul}</h3>
+        <h3 className="text-3xl font-bold text-center">{berita[0]?.judul}</h3>
         <img src={berita[0].foto} alt="" className="w-full h-[500px]"/>
       </div>
       <div>
@@ -57,7 +57,7 @@ const FeatDetailBlog = () => {
         <h3 className="font-bold text-3xl">Artikel lainxnya</h3>
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-      {tes?.slice(0,4).map((k, index) => (
+      {tes?.filter((k)=>k.id!=id).slice(0,4).map((k, index) => (
           <CardBlog
             key={index}
             link={`/blog/detail/${k.id}`}
